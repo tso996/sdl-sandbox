@@ -1,0 +1,48 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+/out/build/*
+
+!/out/build/.gitkeep
+
+.DS_Store
+
+.vscode
+
+# ignore the sdl libraries. Install them and make a symlink to the project path
+
+.include/SDL2/*
+.include/SDL2_image/*
+
+.lib/SDL2/*
+.lib/SDL2_image/*
