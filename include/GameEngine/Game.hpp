@@ -2,6 +2,8 @@
 
 #include "SDL.h"
 #include <iostream>
+#include "SDL_image.h"
+#include <fstream>
 
 class Game {
 
@@ -22,6 +24,5 @@ private:
     bool isRunning;
     SDL_Window *window;
     SDL_Renderer *renderer;
-
-
+    //since there are pointers used here a copy constructor and destructor along with copy assignment constructor is needed
 };
