@@ -1,4 +1,4 @@
-add_library(gameLib GameEngine/Game.cpp GameEngine/TextureManager.cpp)
+add_library(gameLib GameEngine/Game.cpp GameEngine/TextureManager.cpp GameEngine/GameObject.cpp)
 
 include_directories(SDL2 SDL2_image)
 
