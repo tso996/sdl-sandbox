@@ -1,10 +1,11 @@
 #include "Game.hpp"
 #include <unistd.h>
-
-
+#include "TextureManager.h"
 
 
 SDL_Texture* playerTexture;
+SDL_Rect srcR,dstR;
+int cnt = 0;
 
 
 Game::Game(){
@@ -48,16 +49,15 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     std::string myFile = "bin/Archer/archer_idle_right1@2x.png";//This gets found during run time. The #include paths are during compilation. That's why they need paths from the file level and this only needs from the project level. From the getcwd. However the executable is in a deeper folder so it's still not evident.
     std::ifstream file(myFile.c_str());
     if (file) {
-         SDL_Surface* tempSurface = IMG_Load("bin/Archer/archer_idle_right1@2x.png");
-         playerTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
-         SDL_FreeSurface(tempSurface);//clearing surface..probably a destructor or delete
+         playerTexture = TextureManager::LoadTexture("bin/Archer/archer_idle_right1@2x.png", renderer);
+        //  SDL_Surface* tempSurface = IMG_Load("bin/Archer/archer_idle_right1@2x.png");
+        //  playerTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+        //  SDL_FreeSurface(tempSurface);//clearing surface..probably a destructor or delete
          std::cout<<"Texture is found."<<std::endl;
     }else{
         std::cout<<"Texture not found."<<std::endl;
     }
-    file.close();
-    
-   
+    file.close(); 
 }
 
 void Game::clean(){
@@ -86,12 +86,17 @@ void Game::render(){
     //we add stuff to render here
     //whatever is rendered first is going to be behind recent renders
     //so render tilemaps first
-    SDL_RenderCopy(renderer, playerTexture, NULL, NULL);//The 2 nulls are source rectangle and destination rectangle
+    SDL_RenderCopy(renderer, playerTexture, NULL, &dstR);//The 2 nulls are source rectangle and destination rectangle
 
     SDL_RenderPresent(renderer);
 }
 
 void Game::update(){
-    
+    cnt++;
+
+    dstR.h = 128;
+    dstR.w = 128;
+
+    dstR.x = cnt;
 }
 

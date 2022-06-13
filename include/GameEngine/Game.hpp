@@ -18,7 +18,7 @@ public:
     void render();
     void clean();
 
-    bool running(){ return isRunning;}
+    bool running() const { return isRunning;}
 
 private:
     bool isRunning;
