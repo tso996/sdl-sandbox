@@ -46,7 +46,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     std::string myFile = "bin/Archer/archer_idle_right1@2x.png";//This gets found during run time. The #include paths are during compilation. That's why they need paths from the file level and this only needs from the project level. From the getcwd. However the executable is in a deeper folder so it's still not evident.
     std::ifstream file(myFile.c_str());
     if (file) {
-        player = new GameObject("bin/Archer/archer_idle_right1@2x.png",renderer);
+        player = new GameObject("bin/Archer/archer_idle_right1@2x.png",renderer,0,0);
         //  playerTexture = TextureManager::LoadTexture("bin/Archer/archer_idle_right1@2x.png", renderer);
         //  SDL_Surface* tempSurface = IMG_Load("bin/Archer/archer_idle_right1@2x.png");
         //  playerTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
@@ -76,7 +76,6 @@ void Game::handleEvents(){
         default:
             break;
     }
-
 }
 
 void Game::render(){
